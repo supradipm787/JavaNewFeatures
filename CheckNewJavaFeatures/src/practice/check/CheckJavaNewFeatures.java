@@ -14,9 +14,55 @@ import java.util.stream.Collectors;
 
 public class CheckJavaNewFeatures {
 	
-	public List javaElevenFeatures()
+	private class RunnableImpl implements Runnable {
+		int i=0;
+		
+		
+		public synchronized void checkWaitNotify () {
+			// creating of non-empty immutable map directly
+            Map<Integer, String> immutable2 = Map.of(1, "USA", 2, "UK");
+            
+           i = 0;
+          // immutable2.forEach ((k,v) ->   System.out.println ("PriorityKey = " + k + ", Value = " + v) );        
+           immutable2.forEach ((k,v) ->  {    	        	
+    	        	 try {
+    			        	if (k == 2 || i==0) {
+    			        		
+    			        		wait(2000);
+    			        		//System.out.println ("PriorityKey = " + k + ", Value = " + v); 
+    			        		
+    			        	}
+    			        
+    			        } 
+    			        catch (InterruptedException ie ) {
+    			        	System.out.println ("nterruptedException" +  ie);
+    			        }  	        	       
+    	        	    	        	   	        	
+    	        	 //callNotify();
+    	        	 i = 1; 
+    	        	 notify();
+    	            
+    	        	System.out.println ("PriorityKey = " + k + ", Value = " + v); 
+    	        } ) ;
+           
+		}
+		
+		
+		 
+        public void run()
+        {
+            System.out.println(Thread.currentThread().getName()
+                             + ", executing run() method!");
+            checkWaitNotify();
+           
+        
+        }//end of run
+   
+	}//end of class
+	
+	public List <String> javaElevenFeatures()
 	{
-		List list;
+		
 		String multilineString = "Want \n \n (Sr Project Manager) \n to go to Delhi NCR first \n for job";
 		List<String> lines = multilineString.lines()
 		  .filter(line -> !line.isBlank())
@@ -28,8 +74,9 @@ public class CheckJavaNewFeatures {
 	}
 
 	//Creation of Immutable  Map
-	public Map <Integer, String> immutableMap()
+	public Map <Integer, String> immutableMap() 
 	{				
+		
 		Map<Integer, String> mutableMap = new HashMap<>();
 		mutableMap.put(3, "Australia");
 		mutableMap.put(4, "Singapore");
@@ -39,10 +86,14 @@ public class CheckJavaNewFeatures {
 		
 		// creating of non-empty immutable map directly
         Map<Integer, String> immutable2 = Map.of(1, "USA", 2, "UK");
-        immutable2.forEach ((k,v) -> System.out.println ("PriorityKey = " + k + ", Value = " + v));
-		
-        return unmodifiableMap;
-		
+        
+       
+       immutable2.forEach ((k,v) ->   System.out.println ("PriorityKey = " + k + ", Value = " + v) );  
+       
+               
+        
+        return unmodifiableMap;     
+		        		
 	}
 	
 	interface LambdaInterface{
@@ -63,6 +114,7 @@ public class CheckJavaNewFeatures {
 		Consumer <Integer> consumer = (n) -> { System.out.println (n); };
 		al.forEach(consumer);
 		
+		//Lambda implementation with interface
 		LambdaInterface li = (n) -> {System.out.println (n);};
 		li.confirm(29);		
 		
@@ -70,12 +122,18 @@ public class CheckJavaNewFeatures {
 		 Map <Integer, String> m = checkJavaNewFeatures.immutableMap();
 		 m.forEach ((k,v) -> System.out.println ("PriorityKey = " + k + ", Value = " + v));
 		
-		
+		 
+		 
+		 
 		 //Java 11 features for use of new String utility methods
 		 List <String> list = checkJavaNewFeatures.javaElevenFeatures();
 		 list.forEach ((k) -> System.out.println ("Values : " + k));
-		
-
+		 
+		 //Check Multithreading Implementation
+		 Thread t1 = new Thread(new CheckJavaNewFeatures().new RunnableImpl());
+	     t1.start();
+	    // Thread t2 = new Thread(new CheckJavaNewFeatures().new RunnableImpl());
+	    // t2.start();
 	}
 
 }
