@@ -13,7 +13,17 @@ interface ConfirmAction {
         int sum = a+b;
         return sum;
     }
-}  
+}
+
+interface SendNotification {
+    static void sendComm (String s){
+        System.out.println ("Communication is :" + s);
+        sendComm1();
+    }
+    public static void sendComm1(){
+        System.out.println ("This communication is called internally");
+    }
+}
 
 
 public class JavaFeatures7and8 {
@@ -28,7 +38,11 @@ public class JavaFeatures7and8 {
                 break;
             case "Tuesday" :
                 System.out.println ("Today is Tuesday"); 
-                break;           
+                break;
+
+            case "Wednesday" :
+                System.out.println ("Today is Wedneday");
+                break;
         }
 
         //Calling the interface
@@ -68,9 +82,9 @@ public class JavaFeatures7and8 {
         // Use of Optional to avoid Null Pointer Exception
         Optional<List <Integer>> optionalList = Optional.ofNullable (filterList);
         //filterList.forEach(k -> System.out.println (k));
-        optionalList.ifPresent(l -> filterList.forEach(k -> System.out.println (k)));  
-        
-        
+        optionalList.ifPresent(l -> filterList.forEach(k -> System.out.println (k)));
+
+        SendNotification.sendComm("Calling First Communication");
 
     }
 
