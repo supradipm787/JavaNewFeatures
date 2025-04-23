@@ -37,7 +37,9 @@ public class JavaFeatures9_10_11 {
         for (var y=0 ; y< 8 ; y++){
             System.out.print (y + " ");
         }
-        System.out.println (x);    
+        System.out.println (x);  
+        String str = "1" ;
+        System.out.println (str.repeat (7));
     }
 
 }
