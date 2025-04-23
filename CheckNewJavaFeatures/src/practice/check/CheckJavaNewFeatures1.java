@@ -12,6 +12,8 @@ import java.util.function.Consumer;
 //import java.util.Collection;
 import java.util.stream.Collectors;
 
+
+
 public class CheckJavaNewFeatures1 {
 	
 	private class RunnableImpl implements Runnable {
@@ -63,7 +65,7 @@ public class CheckJavaNewFeatures1 {
 	public List <String> javaElevenFeatures()
 	{
 		
-		String multilineString = "Want \n \n (Sr Project Manager) \n to go to Delhi NCR first \n for job";
+		String multilineString = "Want \n \n (Sr Project Manager) \n to go to Delhi NCR or Maharashtra first \n for job";
 		List<String> lines = multilineString.lines()
 		  .filter(line -> !line.isBlank())
 		  .map(String::strip)
@@ -79,7 +81,7 @@ public class CheckJavaNewFeatures1 {
 		
 		Map<Integer, String> mutableMap = new HashMap<>();
 		mutableMap.put(3, "Australia");
-		mutableMap.put(4, "Singapore");
+		mutableMap.put(4, "Singapore"); 
 		//Converting mutable map to immutable map
 		
 		Map<Integer, String> unmodifiableMap = Collections.unmodifiableMap(mutableMap);
@@ -127,7 +129,7 @@ public class CheckJavaNewFeatures1 {
 		 
 		 //Java 11 features for use of new String utility methods
 		 List <String> list = checkJavaNewFeatures1.javaElevenFeatures();
-		 list.forEach ((k) -> System.out.println ("Values : " + k));
+		 list.forEach ((k) -> System.out.println ("Values : " + k)); 
 		 
 		 //Check Multithreading Implementation
 		 Thread t1 = new Thread(new CheckJavaNewFeatures1().new RunnableImpl());
