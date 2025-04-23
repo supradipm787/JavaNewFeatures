@@ -12,7 +12,7 @@ import java.util.function.Consumer;
 //import java.util.Collection;
 import java.util.stream.Collectors;
 
-public class CheckJavaNewFeatures {
+public class CheckJavaNewFeatures1 {
 	
 	private class RunnableImpl implements Runnable {
 		int i=0;
@@ -101,7 +101,7 @@ public class CheckJavaNewFeatures {
 	}
 	
 	public static void main(String[] args) {		
-		CheckJavaNewFeatures checkJavaNewFeatures = new CheckJavaNewFeatures();
+		CheckJavaNewFeatures1 checkJavaNewFeatures1 = new CheckJavaNewFeatures1();
 		System.out.println("Check Java New Features");
 		ArrayList <Integer> al = new ArrayList <Integer> ();
 		
@@ -119,18 +119,18 @@ public class CheckJavaNewFeatures {
 		li.confirm(29);		
 		
 		//Immutable Map
-		 Map <Integer, String> m = checkJavaNewFeatures.immutableMap();
+		 Map <Integer, String> m = checkJavaNewFeatures1.immutableMap();
 		 m.forEach ((k,v) -> System.out.println ("PriorityKey = " + k + ", Value = " + v));
 		
 		 
 		 
 		 
 		 //Java 11 features for use of new String utility methods
-		 List <String> list = checkJavaNewFeatures.javaElevenFeatures();
+		 List <String> list = checkJavaNewFeatures1.javaElevenFeatures();
 		 list.forEach ((k) -> System.out.println ("Values : " + k));
 		 
 		 //Check Multithreading Implementation
-		 Thread t1 = new Thread(new CheckJavaNewFeatures().new RunnableImpl());
+		 Thread t1 = new Thread(new CheckJavaNewFeatures1().new RunnableImpl());
 	     t1.start();
 	    // Thread t2 = new Thread(new CheckJavaNewFeatures().new RunnableImpl());
 	    // t2.start();
